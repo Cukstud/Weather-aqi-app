@@ -1,18 +1,125 @@
-# React + Vite
+# 🌤️ Weather + AQI App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React-based web application that provides **real-time weather data and air quality insights** for any city.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+* 🔍 Search weather by city name
+* 🌡️ Real-time temperature, humidity, and wind speed
+* 🌫️ Air Quality Index (AQI) with category labels
+* 🧪 PM2.5 & PM10 pollutant levels
+* 🔄 Toggle between **Weather** and **AQI** views
+* ⚡ Smooth UI with Tailwind CSS
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+* **Frontend:** React.js
+* **Styling:** Tailwind CSS
+* **Backend:** Node.js (Express API)
+* **APIs Used:**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+  * OpenWeatherMap API (Weather + AQI)
+
+---
+
+## 📸 Preview
+
+(Add screenshots here after deployment)
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/weather-aqi-app.git
+cd weather-aqi-app
+```
+
+---
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+### 3️⃣ Start the frontend
+
+```bash
+npm run dev
+```
+
+---
+
+### 4️⃣ Start backend server
+
+(Make sure your backend is running on port 5000)
+
+```bash
+node server.js
+```
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env` file in your backend:
+
+```
+API_KEY=your_openweather_api_key
+```
+
+---
+
+## 📊 API Endpoints
+
+* `/weather?city=cityName` → Fetch weather data
+* `/aqi?lat=xx&lon=yy` → Fetch AQI data
+
+---
+
+## 🧠 Learnings
+
+* Handling multiple API calls and combining data
+* Managing async state in React
+* Conditional rendering and UI composition
+* Error handling and loading states
+
+---
+
+## 🚀 Future Improvements
+
+* 🌍 Auto-detect user location
+* 📈 AQI visualization with charts
+* 🎨 Improved UI animations
+* ☁️ Deploy backend + frontend
+
+---
+
+## 🤝 Contributing
+
+Feel free to fork this repo and improve it!
+
+---
+
+## 📄 License
+
+This project is open-source and available under the MIT License.
+
+---
+
+## 👨‍💻 Author
+
+**Likhit NVS**
+
+---
+
+⭐ If you found this project useful, give it a star!
