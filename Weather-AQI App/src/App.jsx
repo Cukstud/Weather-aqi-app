@@ -1,10 +1,11 @@
-import React, { useState,useRef } from 'react'
+import React, { useState,useRef,useEffect } from 'react'
 import Search from './components/search';
 import Weather from './components/weather';
 import AQICard from './components/aqiCard';
 import './index.css';
-
+import './radio.css';
 const BASE_URL = "https://weather-aqi-app-7s4z.onrender.com";
+
 
 function App() {
   const requestRef = useRef(0);
@@ -13,6 +14,7 @@ function App() {
   const[loading,setLoading] = useState(false);
   const[error,setError] =  useState(null);
   const[view,setView] = useState(null)
+  const[time,setTime] = useState(new Date());
   const fetchData = async (city) => {
     if (!city||!city.trim()) {
       return;
@@ -59,30 +61,39 @@ function App() {
       setLoading(false);
     }
   }
-
+  useEffect(()=>{
+    const interval = setInterval(()=>{   
+      setTime(new Date());
+    },1000);
+    return()=>clearInterval(interval);
+  })
   return (
     <div className="grid h-screen w-full place-items-center bg-[conic-gradient(at_top_right,_var(--tw-gradient-stops))] from-gray-700 via-gray-700 to-black">
       <section className="grid min-h-[600px] w-full max-w-md rounded-2xl bg-gradient-to-tl from-purple-800 via-violet-900 to-purple-800 p-6">
       <div className="flex h-full flex-col gap-y-5 text-violet-100">
         
           <Search onSearch={fetchData} />
+          
 
-          <header className="space-y-2 text-xl font-medium">
-            <h1>{new Date().toDateString()}</h1>
-          </header>
+          <h1 className="text-xl text-violet-200 drop-shadow-[0_0_8px_#c084fc]">
+           {time.toDateString()} | {time.toLocaleTimeString()}
+          </h1>
+          {!(weather || aqi) && (
+            <h1 className="text-2xl font-extrabold m-2 p-2">
+              Weather,AQI... All in one place</h1>
+          )}
         <main className="relative flex-1">
         {loading && <p>Loading...</p>}
         {error && <p className="text-magenta-500">Error: {error.message}</p>}
       {(weather || aqi) && (
-        <div className="flex justify-center gap-4 my-2" >
-          <label>
-            <input type ="radio" name='view' value='weather' checked={view==='weather'} onChange={(e)=>setView(e.target.value)} className="text-sm font-extrabold"/>
-            Weather
-          </label>
-          <label>
-            <input type ="radio" name='view' value='aqi' checked={view==='aqi'} onChange={(e)=>setView(e.target.value)} className="text-sm font-extrabold"/>
-            AQI
-          </label>
+        <div className="package-container" >
+          <div className="package-tab-wrapper">
+            <input id = "weather" type ="radio" name='view' value='weather' checked={view==='weather'} onChange={(e)=>setView(e.target.value)} className="input"/>
+          <label htmlFor="weather" className="package-tab">Weather</label>
+        
+            <input id = "aqi" type ="radio" name='view' value='aqi' checked={view==='aqi'} onChange={(e)=>setView(e.target.value)} className="input"/>
+          <label htmlFor="aqi" className='package-tab'>AQI</label>
+          </div>
         </div>
       )}
       {view === "weather" && weather && (
