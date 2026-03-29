@@ -4,7 +4,7 @@ import Weather from './components/weather';
 import AQICard from './components/aqiCard';
 import './index.css';
 
-
+const BASE_URL = "https://weather-aqi-app-7s4z.onrender.com";
 
 function App() {
   const requestRef = useRef(0);
@@ -26,7 +26,7 @@ function App() {
       setError(null);
       
 
-      const response = await fetch(`http://localhost:5000/weather?city=${city}`);
+      const response = await fetch(`${BASE_URL}/weather?city=${city}`);
       
       const weatherData = await response.json();
     
@@ -41,7 +41,7 @@ function App() {
       if (weatherData?.coord?.lat !== undefined && weatherData?.coord?.lon !== undefined) {
         const { lat, lon } = weatherData.coord;
         const aqiResponse = await fetch(
-          `http://localhost:5000/aqi?lat=${lat}&lon=${lon}`,
+          `${BASE_URL}/aqi?lat=${lat}&lon=${lon}`,
         );
         if (!aqiResponse.ok) {
           throw new Error('Failed to fetch AQI data');
