@@ -21,8 +21,8 @@ function AQICard({ data,city }) {
     const d = data.list[data.list.length - 1];
     return(
         <div>
-                <h1 className="text-5xl font-extrabold">{city}</h1>
-                <h3 className="text-1xl font-extrabold">AQI: {d.main.aqi} ({getAQILabel(d.main.aqi)})</h3>
+                <h1 className="text-5xl font-extrabold m-2 p-2">{city}</h1>
+                <h3 className="text-1xl font-extrabold m-2 p-2">AQI: {d.main.aqi} ({getAQILabel(d.main.aqi)})</h3>
     
         </div>
     )
