@@ -1,3 +1,4 @@
+Link for the live website:https://weather-aqi-app-ox7m.vercel.app/
 🌤️ Weather + AQI App
 A modern React-based web application that provides real-time weather data and air quality insights for any city.
 
